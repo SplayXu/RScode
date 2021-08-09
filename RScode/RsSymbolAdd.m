@@ -1,4 +1,4 @@
-function [ ret ] = RsSymbolAdd( add1, add2 )% “+”号 的前后两个操作数
+function [ ret ] = RsSymbolAdd( add1, add2 )%2 operating num at both sides of +
 %RSSYMBOLADD Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -13,25 +13,17 @@ if (add2<0 || add2 >15)
 end
 
 %change the dec input to binary
-bin1 = zeros(1,4);
-bin2 = zeros(1,4);
-for ii = 3:-1:0
-    if add1 >= 2^ii
-        bin1(1,4-ii)=1;
-        add1 = add1-2^ii;
-    end;
-    if add2 >= 2^ii
-        bin2(1,4-ii)=1;
-        add2 = add2-2^ii;
-    end;
-end
+
+[bin1]=int2bits(add1,4);
+[bin2]=int2bits(add2,4);
 res = bitxor(bin1,bin2);
-temp = 0;
-for ii = 4:-1:1
-    if res(1,ii) ==1
-        temp = temp + 2^(4-ii);
-    end;
-end
+% temp = 0;
+% for ii = 4:-1:1
+%     if res(1,ii) ==1
+%         temp = temp + 2^(4-ii);
+%     end;
+% end
+[temp]=bits2int(res);
 ret = temp;
 end
 
