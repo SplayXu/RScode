@@ -3,9 +3,7 @@ function [ RsEnCode ] = RsEncode( input )
 %   Detailed explanation goes here
 
 RsEnCode = zeros(1,15);
-for ii = 5:1:15%高11位直接输出
-    RsEnCode(1,ii) = input(1,ii-4);
-end;
+RsEnCode(1,5:15) = input(1,1:11);
 %寄存器取余数，本原多项式p(x) = x^4 + x + 1
 
 %定义一个4位寄存器
@@ -23,8 +21,7 @@ for ii = 11:-1:1
 end;
 
 %将寄存器数字的输出
-for ii = 1:1:4
-    RsEnCode(1,ii) = reg(1,ii);
-end;
+RsEnCode(1,1:4) = reg(1,1:4);
+
 end
 
