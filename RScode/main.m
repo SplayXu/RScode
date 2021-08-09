@@ -1,6 +1,6 @@
 error_framerate = zeros(1,5);
 error_symbolrate = zeros(1,5);
-itertimes = 1000000;
+itertimes = 1000;
 for EbN0 = 0:2:8
     
     %´íÎóÖ¡ÊıÁ¿
